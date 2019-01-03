@@ -1,5 +1,5 @@
 const fetch = 				require('node-fetch');
-const XLSX = 				require('xlsx');
+// const XLSX = 				require('xlsx');
 const { URLSearchParams } = require('url');
 const fs =					require('fs');
 const _ =					require('lodash');
@@ -9,7 +9,7 @@ const trainSearchUrl = "https://booking.uz.gov.ua/train_search/";
 const OdessaStationId = "2208001";
 const LvivStationId = "2218000";
 const HOUR_IN_MILISECONDS = 60 * 60 * 1000;
-const POLL_RESULTS_FILE_NAME = 'C:\\TestFolder\\TestWB.xlsx';
+// const POLL_RESULTS_FILE_NAME = 'C:\\TestFolder\\TestWB.xlsx';
 
 let areNotificationsAllowed = true;
 let workbook, bot;
@@ -46,7 +46,7 @@ function getWorkbook() {
 
 function startPolling() {
 	initializeTelegramBot();
-	getWorkbook();
+	// getWorkbook();
 	pollTrainsForWeek();
 	pollMyTrains();
 }
@@ -170,26 +170,26 @@ function parseAndSaveTrainsData(trainsData, wsName, priority) {
 		finalResult[title] = seats || 'нема';
 	})
 
-	const header = ['Time'].concat(Object.keys(trainsData));
-	if (workbook.SheetNames.indexOf(wsName) === -1) {
-		ws = XLSX.utils.json_to_sheet([finalResult], {header});
-		ws['!cols'] = header.map(() => ({width: 12}));
-		XLSX.utils.book_append_sheet(workbook, ws, wsName);
-	} else {
-		ws = workbook.Sheets[wsName];
-		XLSX.utils.sheet_add_json(ws, [finalResult], {
-			header,
-			skipHeader: true,
-			origin: -1
-		})
-		workbook.Sheets[wsName] = ws;
-	}
+	// const header = ['Time'].concat(Object.keys(trainsData));
+	// if (workbook.SheetNames.indexOf(wsName) === -1) {
+	// 	ws = XLSX.utils.json_to_sheet([finalResult], {header});
+	// 	ws['!cols'] = header.map(() => ({width: 12}));
+	// 	XLSX.utils.book_append_sheet(workbook, ws, wsName);
+	// } else {
+	// 	ws = workbook.Sheets[wsName];
+	// 	XLSX.utils.sheet_add_json(ws, [finalResult], {
+	// 		header,
+	// 		skipHeader: true,
+	// 		origin: -1
+	// 	})
+	// 	workbook.Sheets[wsName] = ws;
+	// }
 
-	try {
-		XLSX.writeFile(workbook, POLL_RESULTS_FILE_NAME);
-	} catch (err) {
-		console.log(err);
-	}
+	// try {
+	// 	XLSX.writeFile(workbook, POLL_RESULTS_FILE_NAME);
+	// } catch (err) {
+	// 	console.log(err);
+	// }
 	console.log('Polled data');
 }
 
