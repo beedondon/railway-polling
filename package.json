@@ -1,0 +1,21 @@
+{
+  "name": "railway-polling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  	"start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "form-data": "^2.3.3",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.3.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "xlsx": "^0.14.1"
+  }
+}
